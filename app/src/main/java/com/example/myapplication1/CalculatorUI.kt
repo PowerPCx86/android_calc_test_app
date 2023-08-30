@@ -18,7 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -29,24 +28,33 @@ import com.example.myapplication1.ui.theme.MediumGray
 import com.example.myapplication1.ui.theme.PrussianBlue
 
 @Composable
-fun CalculatorUI(viewModel: CalculatorViewModel)
-{
-    val exception = viewModel.expression
+fun CalculatorUI(
+    viewModel: CalculatorViewModel
+){
+    val expression = viewModel.expression
     val buttonSpacing = 8.dp
+
+
     Log.d("MainActivity", "onCreate: ${viewModel.expression.value}")
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.DarkGray))
-    {
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.BottomCenter), verticalArrangement = Arrangement.spacedBy(buttonSpacing))
-        {
-            LazyRow(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth(), reverseLayout = true)
-            {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(DarkGray)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter),
+            verticalArrangement = Arrangement.spacedBy(buttonSpacing),
+        ) {
+            LazyRow(
+                horizontalArrangement = Arrangement.End,
+                modifier = Modifier.fillMaxWidth(),
+                reverseLayout = true
+            ) {
                 item {
                     Text(
-                        text = exception.value,
+                        text = expression.value,
                         textAlign = TextAlign.End,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -54,7 +62,8 @@ fun CalculatorUI(viewModel: CalculatorViewModel)
                         fontWeight = FontWeight.Light,
                         fontSize = 80.sp,
                         color = Color.White,
-                        maxLines = 1 )
+                        maxLines = 1
+                    )
                 }
             }
             Divider(
@@ -63,27 +72,32 @@ fun CalculatorUI(viewModel: CalculatorViewModel)
                     .fillMaxWidth()
                     .padding(bottom = 16.dp)
             )
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(buttonSpacing))
-            {
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
+            ) {
                 CalculatorButton(
                     symbol = "AC",
                     color = DarkRed,
                     modifier = Modifier
                         .aspectRatio(1f)
                         .weight(1f)
-                        .clickable { viewModel.clear() }
+                        .clickable {
+                            viewModel.clear()
+                        }
                 )
+
                 CalculatorButton(
                     symbol = "(",
                     color = PrussianBlue,
                     modifier = Modifier
                         .aspectRatio(1f)
                         .weight(1f)
-                        .clickable { viewModel.append("(") }
+                        .clickable {
+                            viewModel.append("(")
+                        }
                 )
                 CalculatorButton(
                     symbol = ")",
@@ -91,119 +105,209 @@ fun CalculatorUI(viewModel: CalculatorViewModel)
                     modifier = Modifier
                         .aspectRatio(1f)
                         .weight(1f)
-                        .clickable { viewModel.append(")") }
+                        .clickable {
+                            viewModel.append(")")
+                        }
                 )
+
                 CalculatorButton(
-                    symbol = "/",
+                    symbol = "÷",
                     color = PrussianBlue,
                     modifier = Modifier
                         .aspectRatio(1f)
                         .weight(1f)
-                        .clickable { viewModel.append("/") }
+                        .clickable {
+                            viewModel.append("÷")
+                        }
                 )
             }
-            Row (
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-            )
-            {
+            ) {
                 CalculatorButton(
                     symbol = "7",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("7") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("7")
+                        }
                 )
                 CalculatorButton(
                     symbol = "8",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("8") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("8")
+                        }
                 )
                 CalculatorButton(
                     symbol = "9",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("9") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("9")
+                        }
                 )
                 CalculatorButton(
-                    symbol = "*",
+                    symbol = "×",
                     color = PrussianBlue,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("*") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("×")
+                        }
                 )
             }
-            Row (
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-            )
-            {
+            ) {
                 CalculatorButton(
                     symbol = "4",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("4") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("4")
+                        }
                 )
                 CalculatorButton(
                     symbol = "5",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("5") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("5")
+                        }
                 )
                 CalculatorButton(
                     symbol = "6",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("6") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("6")
+                        }
                 )
                 CalculatorButton(
                     symbol = "-",
                     color = PrussianBlue,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("-") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("-")
+                        }
                 )
             }
-            Row (
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-            )
-            {
+            ) {
                 CalculatorButton(
                     symbol = "1",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("1") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("1")
+                        }
                 )
                 CalculatorButton(
                     symbol = "2",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("2") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+
+                        .clickable {
+                            viewModel.append("2")
+                        }
                 )
                 CalculatorButton(
                     symbol = "3",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("3") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("3")
+                        }
                 )
                 CalculatorButton(
                     symbol = "+",
                     color = PrussianBlue,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("+") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("+")
+                        }
                 )
             }
-            Row (
-                modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp,end = 16.dp,bottom = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-            )
-            {
+            ) {
                 CalculatorButton(
                     symbol = "0",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append("0") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append("0")
+                        }
                 )
                 CalculatorButton(
                     symbol = ".",
                     color = MediumGray,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.append(".") }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.append(".")
+                        }
                 )
                 CalculatorButton(
-                    symbol = "`del",
+                    symbol = "Del",
                     color = DarkRed,
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.delete() }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.delete()
+                        }
                 )
                 CalculatorButton(
                     symbol = "=",
                     color = Color(0xFF003175),
-                    modifier = Modifier.aspectRatio(1f).weight(1f).clickable { viewModel.evaluate() }
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .weight(1f)
+                        .clickable {
+                            viewModel.evaluate()
+                        }
                 )
             }
         }

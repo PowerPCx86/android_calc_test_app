@@ -149,5 +149,3 @@ fun parseFactor(tokenizer: Tokenizer): Double {
         throw IllegalArgumentException("Invalid factor: ${tokenizer.token}")
     }
 }
-
-

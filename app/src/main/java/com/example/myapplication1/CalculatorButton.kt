@@ -13,29 +13,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
 fun CalculatorButton(
     symbol: String,
     modifier: Modifier = Modifier,
     color: Color = Color.White,
-    testStyle: TextStyle = TextStyle()
+    textStyle: TextStyle = TextStyle(),
 ) {
     Box(
-        modifier = modifier.then(
-            Modifier
-                .clip(RoundedCornerShape(100.dp))
-                .background(color)
-        ),
-        contentAlignment = Alignment.Center
-    )
-    {
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .clip(RoundedCornerShape(100.dp))
+            .background(color)
+            .then(modifier)
+    ) {
         Text(
             text = symbol,
-            style = TextStyle(),
+            style = textStyle,
             fontSize = 36.sp,
-            color = Color.White
+            color = Color.White,
         )
     }
-
 }
